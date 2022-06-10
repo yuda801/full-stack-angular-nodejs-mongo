@@ -1,0 +1,34 @@
+<h1>List Of Oprations</h1>
+<div *ngFor="let field of operations">
+  {{field.operationId}}
+  {{field.accountNumber}}
+  {{field.type}}
+  {{field.ammount}}
+  {{field.interest}}
+  {{field.payments}}
+  {{field.operationDate}}
+  <!-- <button (click)="delCar(car._id)"> delete</button> -->
+</div>
+
+
+<hr>
+<h1>Add an Operation</h1>
+<form #myform="ngForm">
+
+  operationId:
+  <input name="operationId" type="number" ngModel /><br>
+  accountNumber:
+  <input name="accountNumber" type="number" ngModel /><br>
+  type:
+  <input name="type" ngModel /><br>
+  ammount:
+  <input name="ammount" type="number" ngModel /><br>
+  interest:
+  <input name="interest" type="number" ngModel /><br>
+  payments:
+  <input name="payments" type="number" ngModel /><br>
+  operationDate:
+  <input name="operationDate" ngModel /><br>
+
+  <button (click)="addOperation(myform)">Add</button>
+</form>
