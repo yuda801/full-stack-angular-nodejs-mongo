@@ -1,4 +1,4 @@
-<h1>List Of Oprations</h1>
+<h1>List Of Operations</h1>
 <div *ngFor="let field of operations">
   {{field.operationId}}
   {{field.accountNumber}}
@@ -12,23 +12,88 @@
 
 
 <hr>
-<h1>Add an Operation</h1>
-<form #myform="ngForm">
+<div class="container">
+  <div class="box">
+    <br>
 
-  operationId:
-  <input name="operationId" type="number" ngModel /><br>
+    <form #myform="ngForm">
+      <header>
+        <h1>Add An Operation</h1>
+      </header>
+
+      <div class="form">
+        <mat-form-field appearance="fill">
+          <mat-label>Select operation type</mat-label>
+          <br>
+          <mat-select>
+            <mat-option value="withdraw"
+              (click)="action='withdraw'">Withdraw</mat-option>
+            <mat-option value="depoosite"
+              (click)="action='deposite'">Deposite</mat-option>
+            <mat-option value="loan"
+              (click)="action='loan'">Loan</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Ammount</mat-label>
+          <input type="number" ngModel
+          name="amount"
+            matInput>
+        </mat-form-field><br>
+
+        <mat-form-field *ngIf="action==='loan'"
+          appearance="fill">
+          <mat-label>Interest</mat-label>
+          <input type="number" ngModel
+          name="interest"
+            matInput>
+        </mat-form-field><br>
+
+        <mat-form-field *ngIf="action==='loan'"
+          appearance="fill">
+          <mat-label>Payments</mat-label>
+          <input type="number" ngModel
+          name="payments"
+            matInput>
+        </mat-form-field><br>
+        <br>
+
+        <button 
+          mat-raised-button
+          color="primary"
+          (click)="addOperation(myform)">
+          Add</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<!-- operationId:
+  <input name="operationId"
+    type="number"
+    ngModel /><br>
   accountNumber:
-  <input name="accountNumber" type="number" ngModel /><br>
+  <input name="accountNumber"
+    type="number"
+    ngModel /><br>
   type:
-  <input name="type" ngModel /><br>
+  <input name="type"
+    ngModel /><br>
   ammount:
-  <input name="ammount" type="number" ngModel /><br>
+  <input name="ammount"
+    type="number"
+    ngModel /><br>
   interest:
-  <input name="interest" type="number" ngModel /><br>
+  <input name="interest"
+    type="number"
+    ngModel /><br>
   payments:
-  <input name="payments" type="number" ngModel /><br>
+  <input name="payments"
+    type="number"
+    ngModel /><br>
   operationDate:
-  <input name="operationDate" ngModel /><br>
-
-  <button (click)="addOperation(myform)">Add</button>
-</form>
+  <input name="operationDate"
+    ngModel /><br> -->

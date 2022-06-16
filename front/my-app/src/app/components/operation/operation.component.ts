@@ -4,13 +4,14 @@ import { Operation } from 'src/app/models/operation';
 import { OperationService } from 'src/app/services/operation.service';
 
 @Component({
-  selector: 'app-car',
+  selector: 'app-operation',
   templateUrl: './operation.component.html',
   styleUrls: ['./operation.component.css']
 })
-export class CarComponent {
+export class OperationComponent {
   operations: Operation[] = []
-
+  action: string = ''
+  temoId = 0
   constructor(private operation: OperationService) {
     this.getAllOperations()
   }
@@ -19,13 +20,15 @@ export class CarComponent {
     console.log(frm.value.color)
     let temp = new Operation()
 
-    temp.operationId = frm.value.operationId
-    temp.accountNumber = frm.value.accountNumber
-    temp.type = frm.value.type
+    // temp.operationId = frm.value.operationId
+    temp.operationId = this.temoId++
+    temp.accountNumber = frm.value.accountNumber || 1
+    // temp.type = frm.value.type
+    temp.type = this.action
     temp.ammount = frm.value.ammount
-    temp.interest = frm.value.interest
-    temp.payments = frm.value.payments
-    temp.operationDate = frm.value.operationDate
+    temp.interest = frm.value.interest || null
+    temp.payments = frm.value.payments || null
+    temp.operationDate = frm.value.operationDate || null
     this.operation.addOperation(temp).subscribe(msg => console.log(msg))
     this.getAllOperations()
   }
