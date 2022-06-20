@@ -9,12 +9,12 @@ The second part lets you add new operations (-the operation component)
 
 ## how to run the app
 
-npm i
-cd back
-npm start
-cd ..
-cd front/myapp
-ng s -o
+npm i   
+cd back  
+npm start  
+cd ..   
+cd .\front\my-app   
+ng s -o   
 
 ##
 
