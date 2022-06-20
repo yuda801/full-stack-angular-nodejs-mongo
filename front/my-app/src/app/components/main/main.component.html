@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="box">
+    <br>
+
+    <form #accountInputForm="ngForm">
+      <header class="center">
+        <h1 class="center">List Of Operations</h1>
+      </header>
+
+      <div class="form">
+
+        <mat-form-field appearance="fill">
+          <mat-label>Account</mat-label>
+          <input type="number"
+            name="account"
+            matInput>
+        </mat-form-field><br>
+        <!-- ngModel -->
+
+        <button mat-raised-button
+          color="primary"
+          (click)="CheckAccount(accountInputForm)">
+          Show Operations</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+<!-- <div class="card-container"> -->
+<div *ngFor="let field of operations">
+  <div *ngIf="account === field.accountNumber">
+    account is: {{ account}}
+    <div *ngIf="account">
+      <mat-card class="example-card">
+        <mat-card-title>account: {{account}}</mat-card-title>
+        <mat-card-title>field.accountNumber: {{field.accountNumber}}</mat-card-title>
+        <mat-card-title>field.type: {{field.type}}</mat-card-title>
+        <mat-card-subtitle>field.ammount: {{field.ammount}}
+        </mat-card-subtitle>
+        <mat-card-content>
+          <p *ngIf="field.type === 'loan' "> interest:{{field.interest}}
+          </p>
+          <p *ngIf="field.type === 'loan' ">payment: {{field.payments}}
+          </p>
+          <p *ngIf="field.operationDate !== '0-0-0' "> date:{{field.operationDate}}
+          </p>
+        </mat-card-content>
+        <!-- <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions> -->
+      </mat-card>
+
+    </div>
+  </div>
+</div>
+
+<!--
+  {{field.operationId}}
+  {{field.accountNumber}}
+  {{field.type}}
+  {{field.ammount}}
+  {{field.interest}}
+  {{field.payments}}
+  {{field.operationDate}}
+</div> -->

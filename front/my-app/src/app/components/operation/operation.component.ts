@@ -8,29 +8,38 @@ import { OperationService } from 'src/app/services/operation.service';
   templateUrl: './operation.component.html',
   styleUrls: ['./operation.component.css']
 })
+
+//This operation requires three templates
+
 export class OperationComponent {
   operations: Operation[] = []
   action: string = ''
-  temoId = 0
+  tempId = 0
   constructor(private operation: OperationService) {
     this.getAllOperations()
   }
-  addOperation(frm: NgForm) {
-    console.log(frm.value.model)
-    console.log(frm.value.color)
-    let temp = new Operation()
 
-    // temp.operationId = frm.value.operationId
-    temp.operationId = this.temoId++
-    temp.accountNumber = frm.value.accountNumber || 1
-    // temp.type = frm.value.type
-    temp.type = this.action
-    temp.ammount = frm.value.ammount
-    temp.interest = frm.value.interest || null
-    temp.payments = frm.value.payments || null
-    temp.operationDate = frm.value.operationDate || null
-    this.operation.addOperation(temp).subscribe(msg => console.log(msg))
-    this.getAllOperations()
+  addOperation(frm: NgForm) {
+    console.log(frm.value.operationId)
+    console.log(frm.value.accountNumber)
+
+    if (frm.value.type !== '' && frm.value.amount !== null) {
+      let temp = new Operation()
+      // temp.operationId = frm.value.operationId
+      temp.operationId = this.tempId++
+      temp.accountNumber = frm.value.accountNumber || 1
+      // temp.type = frm.value.type
+      temp.type = this.action
+      temp.ammount = frm.value.ammount
+      temp.interest = frm.value.interest || null
+      temp.payments = frm.value.payments || null
+      temp.operationDate = String(Date.now())
+      this.operation.addOperation(temp).subscribe(msg => console.log(msg))
+      this.getAllOperations()
+    }
+    else {
+      alert("plesae enter operation detailes")
+    }
   }
 
   getAllOperations() {

@@ -11,7 +11,7 @@ export class OperationService {
   constructor(private http: HttpClient) { }
   URL = "http://127.0.0.1:3005/operations"
 
-  /** GET cars from the server */
+  /** GET operations from the server */
   getOperations(): Observable<Operation[]> {
     return this.http.get<Operation[]>(this.URL)
   }
@@ -26,7 +26,7 @@ export class OperationService {
   //   return this.http.delete<Operation>(`${this.URL}/${id}`)
   // }
 
-  /** create a  Operation  */
+  /** create a new Operation  */
   addOperation(Operation: Operation): Observable<any> {
     console.log('service add')
     return this.http.post<any>(`${this.URL}`, {
@@ -36,8 +36,7 @@ export class OperationService {
       'ammount': Operation.ammount,
       'interest': Operation.interest,
       'payments': Operation.payments,
-      'operationDate': Operation.operationDate,
-
+      'operationDate': Operation.operationDate
     })
   }
 }

@@ -2,10 +2,9 @@ const Operation = require('./operation.model');
 
 // Create and Save a new Note
 exports.create = (req, res) => {
-    // Validate request
     if (!req.body.accountNumber) {
         return res.status(400).send({
-            message: "accountNumber can not be empty"
+            message: "account number can not be empty"
         });
     }
 

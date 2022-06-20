@@ -11,6 +11,11 @@
   background-color: antiquewhite;
 }
 
+.center {
+  text-align: center;
+  align-self: center;
+}
+
 .box {
   display: flex;
   justify-content: center;

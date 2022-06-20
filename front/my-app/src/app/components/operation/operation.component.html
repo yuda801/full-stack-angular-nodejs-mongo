@@ -1,15 +1,3 @@
-<h1>List Of Operations</h1>
-<div *ngFor="let field of operations">
-  {{field.operationId}}
-  {{field.accountNumber}}
-  {{field.type}}
-  {{field.ammount}}
-  {{field.interest}}
-  {{field.payments}}
-  {{field.operationDate}}
-  <!-- <button (click)="delCar(car._id)"> delete</button> -->
-</div>
-
 
 <hr>
 <div class="container">
@@ -38,30 +26,32 @@
 
         <mat-form-field appearance="fill">
           <mat-label>Ammount</mat-label>
-          <input type="number" ngModel
-          name="amount"
+          <input type="number"
+            ngModel
+            name="amount"
             matInput>
         </mat-form-field><br>
 
         <mat-form-field *ngIf="action==='loan'"
           appearance="fill">
           <mat-label>Interest</mat-label>
-          <input type="number" ngModel
-          name="interest"
+          <input type="number"
+            ngModel
+            name="interest"
             matInput>
         </mat-form-field><br>
 
         <mat-form-field *ngIf="action==='loan'"
           appearance="fill">
           <mat-label>Payments</mat-label>
-          <input type="number" ngModel
-          name="payments"
+          <input type="number"
+            ngModel
+            name="payments"
             matInput>
         </mat-form-field><br>
         <br>
 
-        <button 
-          mat-raised-button
+        <button mat-raised-button
           color="primary"
           (click)="addOperation(myform)">
           Add</button>
