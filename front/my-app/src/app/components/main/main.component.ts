@@ -10,7 +10,7 @@ import { OperationService } from 'src/app/services/operation.service';
 })
 export class MainComponent implements OnInit {
   operations: Operation[] = []
-  account: number = 2
+  account: number = 0
   isAccountRegistered: boolean = false
 
   constructor(private operation: OperationService) {
@@ -20,8 +20,10 @@ export class MainComponent implements OnInit {
 
   CheckAccount(accountInputForm: NgForm) {
     this.operation.getOperations().subscribe(operationAR => this.operations = operationAR)
-    this.account = accountInputForm.value.accountNumber
+    this.account = accountInputForm.value.account
     console.log(this.operations)
+    // console.log("form is: " + accountInputForm)
+    console.log(accountInputForm)
     console.log("account is: " + this.account)
     this.operations.forEach(doc => {
       if (doc.accountNumber === this.account)

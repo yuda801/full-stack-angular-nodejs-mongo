@@ -13,9 +13,9 @@
           <mat-label>Account</mat-label>
           <input type="number"
             name="account"
+            ngModel
             matInput>
         </mat-form-field><br>
-        <!-- ngModel -->
 
         <button mat-raised-button
           color="primary"
@@ -31,20 +31,19 @@
 <!-- <div class="card-container"> -->
 <div *ngFor="let field of operations">
   <div *ngIf="account === field.accountNumber">
-    account is: {{ account}}
     <div *ngIf="account">
       <mat-card class="example-card">
-        <mat-card-title>account: {{account}}</mat-card-title>
-        <mat-card-title>field.accountNumber: {{field.accountNumber}}</mat-card-title>
-        <mat-card-title>field.type: {{field.type}}</mat-card-title>
-        <mat-card-subtitle>field.ammount: {{field.ammount}}
+        <!-- <mat-card-title>account: {{account}}</mat-card-title> -->
+        <!-- <mat-card-title>account number: {{field.accountNumber}}</mat-card-title> -->
+        <mat-card-title>{{field.type}}</mat-card-title>
+        <mat-card-subtitle>Ammount: {{field.ammount}}
         </mat-card-subtitle>
         <mat-card-content>
-          <p *ngIf="field.type === 'loan' "> interest:{{field.interest}}
+          <p *ngIf="field.type === 'loan' "> Interest:{{field.interest}}
           </p>
-          <p *ngIf="field.type === 'loan' ">payment: {{field.payments}}
+          <p *ngIf="field.type === 'loan' ">Payment: {{field.payments}}
           </p>
-          <p *ngIf="field.operationDate !== '0-0-0' "> date:{{field.operationDate}}
+          <p *ngIf="field.operationDate !== '0-0-0' "> Date:{{field.operationDate}}
           </p>
         </mat-card-content>
         <!-- <mat-card-actions>
@@ -56,6 +55,9 @@
     </div>
   </div>
 </div>
+
+<app-operation></app-operation>
+<!-- <router-outlet></router-outlet> -->
 
 <!--
   {{field.operationId}}
